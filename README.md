@@ -1,2 +1,2 @@
 # ES-DoorSensor
-Embedded Systems door sensor code
+Dies ist der Türensensor code der im Rahmen des Projektes Embedded Systems 2021 entstand.
