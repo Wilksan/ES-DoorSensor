@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="de">
+    <head>
+        <title>Setup</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="../css/setup.css">
+        <link rel="icon" type="image/png" href="../rsc/icon.png">
+    </head>
+    <body>
+        <div id="content-page-wrapper">
+            <header>
+                <h1 class="unselectable" style="color: white;">Gerät-Einstellungen</h1>
+            </header>
+            <div id="content-wrapper">
+                <div id="selections-content-wrapper">
+                    <div id="selection-login-wrapper">
+                        <input type="button" value="Login" onclick="enableSetupOption(0)">
+                    </div>
+                    <div id="selection-wifi-wrapper">
+                        <input type="button" value="WiFi" onclick="enableSetupOption(1)">
+                    </div>
+                    <div id="selection-database-wrapper">
+                        <input type="button" value="Datenbank" onclick="enableSetupOption(2)">
+                    </div>
+                    <div id="selection-room-wrapper">
+                        <input type="button" value="Raum" onclick="enableSetupOption(3)">
+                    </div>
+                    <div id="selection-device-wrapper">
+                        <input type="button" value="Gerät" onclick="enableSetupOption(4)">
+                    </div>
+                </div>
+                <div id="options-content-wrapper">
+                    <div id="login-option-wrapper">
+                        <form>
+                            <span>
+                                <label class="unselectable">Nutzername:</label>
+                                <input onkeyup="usernameCorrect()" type="text" id="inputUsername" class="input">
+                            </span>
+                            <span id="spanUsername" style="color: red;"></span>
+                            <span style="margin-top: 1em;">
+                                <label class="unselectable">Altes Password:</label>
+                                <input class="unselectable" type="password" id="inputOldPassword" class="input" disabled>
+                            </span>
+                            <div class="unselectable" id="login-option-information-wrapper" style="margin-top: 1em;margin-bottom: 1em;">
+                                <span>Das neue Password:</span>
+                                <ul>
+                                    <li>darf mit keinen Sonderzeichen oder einer Zahl beginnen.</li>
+                                    <li>muss einen Großbuchstaben enthalten.</li>
+                                    <li>darf nicht kürzer als 8 Zeichen und nicht länger als 15 Zeichen sein.</li>
+                                </ul>
+                            </div>
+                            <span>
+                                <label class="unselectable">Neues Password:</label>
+                                <input onkeyup="checkForNewPasswordCorrect()" type="password" id="inputNewPassword" class="input">
+                            </span>
+                            <span id="spanNewPasswordMessage" style="color: red;"></span>
+                            <span>
+                                <label class="unselectable">Password wiederholen:</label>
+                                <input onkeyup="checkForRepeatPasswordCorrect()" type="password" id="inputRepeatPassword" class="input">
+                            </span>
+                            <span id="spanRepeatPasswordMessage" style="color: red;"></span>
+                            <span style="margin-top: 1em;">
+                                <input onclick="commitNewUserData()" type="button" value="Speichern" id="buttonCommitLogin" disabled>
+                            </span>
+                        </form>
+                    </div>
+                    <div id="wifi-option-wrapper">
+                        <form>
+                            <span>
+                                <label class="unselectable">Netzerkname:</label>
+                                <input type="text" id="inputWifiName" class="input">
+                            </span>
+                            <span style="margin-top: 1em;">
+                                <label class="unselectable">Password:</label>
+                                <input type="text" id="inputWifiPassword" class="input">
+                            </span>
+                            <span>
+                                <label class="unselectable">Password wiederholen:</label>
+                                <input type="text" id="inputWifiRepeatPassword" class="input">
+                            </span>
+                            <span style="margin-top: 1em;">
+                                <input onclick="commitWifiData()" type="button" value="Speichern" id="buttonCommitWifi" disabled>
+                            </span>
+                        </form>
+                    </div>
+                    <div id="database-option-wrapper">
+                        <form>
+                            <span>
+                                <label class="unselectable">IP:</label>
+                                <div id="ip-wrapper">
+                                    <input 
+                                        onkeyup="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" 
+                                        onchange="javascript: if(this.value < 0 || this.value > 255) this.style.border = '1px solid red'; else this.style.border = '';"
+                                        type="number" 
+                                        min="0" max="255" 
+                                        maxlength="3"
+                                        class="input"
+                                    />
+                                    <input 
+                                        onkeyup="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" 
+                                        onchange="javascript: if(this.value < 0 || this.value> 255) this.style.border = '1px solid red'; else this.style.border = '';"type="number" 
+                                        min="0" max="255" 
+                                        maxlength="3"
+                                        class="input"
+                                    />
+                                    <input 
+                                        onkeyup="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" 
+                                        onchange="javascript: if(this.value < 0 || this.value > 255) this.style.border = '1px solid red'; else this.style.border = '';"
+                                        type="number" 
+                                        min="0" max="255"
+                                        maxlength="3"
+                                        class="input"
+                                    />
+                                    <input 
+                                        onkeyup="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" 
+                                        onchange="javascript: if(this.value < 0 || this.value> 255) this.style.border = '1px solid red'; else this.style.border = '';"type="number" 
+                                        min="0" max="255" 
+                                        maxlength="3"
+                                        class="input"
+                                    />
+                                </div>
+                            </span>
+                            <span>
+                                <label class="unselectable">Nutzername:</label>
+                                <input type="text" id="inputDatabaseUsername" class="input">
+                            </span>
+                            <span style="margin-top: 1em;">
+                                <label class="unselectable">Password:</label>
+                                <input type="text" id="inputDatabasePassword" class="input">
+                            </span>
+                            <span>
+                                <label class="unselectable">Password wiederholen:</label>
+                                <input type="text" id="inputDatabaseRenewPassword" class="input">
+                            </span>
+                            <span style="margin-top: 1em;">
+                                <input onclick="commitDatabaseData()" type="button" value="Speichern" id="buttonCommitDatabase" disabled>
+                            </span>
+                        </form>
+                    </div>
+                    <div id="room-option-wrapper">
+                        <form>
+                            <span>
+                                <label class="unselectable">Firmenname:</label>
+                                <input type="text" id="inputRoomCompanyName" class="input">
+                            </span>
+                            <span >
+                                <label class="unselectable">Raum-Bezeichnung:</label>
+                                <input type="text" id="inputRoomName" class="input">
+                            </span>
+                            <span style="margin-top: 1em;">
+                                <label class="unselectable">Raumgröße:</label>
+                                <input type="number" id="inputRoomSize" class="input">
+                            </span>
+                            <span>
+                                <label class="unselectable">Max. Personenanzahl:</label>
+                                <input type="number" id="inputRoomMaxPersonCount" class="input">
+                            </span>
+                            <span style="margin-top: 1em;">
+                                <input onclick="commitRoomData()" type="button" value="Speichern" id="buttonCommitRoom" disabled>
+                            </span>
+                        </form>
+                    </div>
+                    <div id="device-option-wrapper">
+                        <form>
+                            <span style="margin-top: 1em;">
+                                <input onclick="sendCommitRequest()" type="button" value="Konfiguration abschließen" id="buttonCommitDevice" style="background-color: darkred;">
+                            </span>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <footer>
+                <p class="unselectable" style="color: white;"></p>
+            </footer>
+        </div>
+        <script src="../js/setup.js"></script>
+    </body>
+</html>

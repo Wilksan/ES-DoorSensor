@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Login</title>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" type="text/css" href="css/login.css">
+        <link rel="icon" type="image/png" href="rsc/icon.png">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div id="content-page-wrapper" >
+            <header>
+                <h1 class="unselectable" style="color: white;">Login</h1>
+            </header>
+            <div id="content-wrapper">
+                <form>
+                    <span>
+                        <label class="unselectable">Username:</label>
+                        <input type="text" id="inputUsername" onkeyup="enableLoginButton()">
+                    </span>
+                    <span>
+                        <label class="unselectable">Password:</label>
+                        <input type="password" id="inputPassword" onkeyup="enableLoginButton()">
+                    </span>
+                    <input type="button" value="Log in" id="inputButtonLogIn" onclick="requestConfigPage()" disabled>
+                    <span id="information" style="color: red;"></span>
+                </form>                
+            </div>
+            <footer>
+            </footer>
+        </div>
+        <script src="./js/login.js"></script>
+    </body>
+</html>

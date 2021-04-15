@@ -1,0 +1,77 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: bolder;
+}
+
+#content-page-wrapper{
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 100vw;
+}
+
+
+/*Header & footer*/
+header{
+    background-color: rgb(1, 92, 153);
+    height: calc(100vh * 0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+footer{
+    background-color: rgb(1, 92, 153);
+    height: calc(100vh * 0.05);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/*Content page*/
+#content-wrapper{    
+    display: flex;
+    flex-grow: 1;
+    justify-content: center;
+}
+
+/*Form*/
+#content-wrapper > form{
+    display: flex;
+    flex-direction: column;
+    margin-top: 3em;
+    padding: 1em;
+}
+
+#content-wrapper > form > span{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#content-wrapper > form > span > label{
+    width: 100px;
+}
+
+#content-wrapper > form > span > input{
+    flex-grow: 1;
+}
+
+@media only screen and (max-width:600px){
+    #content-wrapper > form{
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+        margin-top: 2em;
+    }
+}
+@media only screen and (max-width:500px){
+    #content-wrapper > form{
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+        margin-top: 2em;
+    }
+}
